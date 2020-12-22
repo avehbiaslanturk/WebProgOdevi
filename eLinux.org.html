@@ -1,0 +1,889 @@
+﻿<!DOCTYPE html>
+
+<head>
+
+	<title>eLinux.org</title>
+    
+    <style>
+
+        html {
+            font-size: 100%;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #mw-page-base {
+            height: 5em;
+            background-position: bottom left;
+            background-repeat: repeat-x;
+            background-image: url(/skins/Vector/images/page-fade.png?1d168);
+            background-color: #f6f6f6;
+            background-image: -webkit-linear-gradient(top,#ffffff 50%,#f6f6f6 100%);
+            background-image: -moz-linear-gradient(top,#ffffff 50%,#f6f6f6 100%);
+            background-image: linear-gradient(#ffffff 50%,#f6f6f6 100%);
+            background-color: #ffffff;
+        }
+
+        #mw-head-base {
+            margin-top: -5em;
+            margin-left: 10em;
+            height: 5em;
+        }
+
+        .mw-body {
+            margin-left: 10em;
+            border: 1px solid #a7d7f9;
+            border-right-width: 0;
+            margin-top: -1px;
+        }
+
+        #siteNotice {
+            position: relative;
+            text-align: center;
+            margin: 0;
+        }
+
+        .mw-body-content p {
+            line-height: inherit;
+            margin: 0.5em 0;
+        }
+
+        .mw-body .mw-indicators {
+            float: right;
+            line-height: 1.6;
+            font-size: 0.875em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .mw-body-content {
+            position: relative;
+            line-height: 1.6;
+            font-size: 0.875em;
+            z-index: 0;
+        }
+
+        table {
+            display: table;
+            border-collapse: separate;
+            box-sizing: border-box;
+            border-spacing: 2px;
+            border-color: grey;
+        }
+
+        .toc {
+            display: inline-block;
+            display: table;
+            zoom: 1;
+            *display: inline;
+            padding: 7px;
+        }
+
+        .mw-body-content h2 {
+            font-size: 1.5em;
+            margin-top: 1em;
+        }
+
+        .toc, .mw-warning, .toccolours {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            padding: 5px;
+            font-size: 95%;
+        }
+
+        #catlinks {
+            text-align: left;
+        }
+
+        .catlinks {
+            border: 1px solid #a2a9b1;
+            background-color: #f8f9fa;
+            padding: 5px;
+            margin-top: 1em;
+            clear: both;
+        }
+
+        .visualClear {
+            clear: both;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #000;
+            background: none;
+            font-weight: normal;
+            margin: 0;
+            overflow: hidden;
+            padding-top: 0.5em;
+            padding-bottom: 0.17em;
+            border-bottom: 1px solid #a2a9b1;
+        }
+
+        #mw-head {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+        }
+
+        #p-personal {
+            position: absolute;
+            top: 0.33em;
+            right: 0.75em;
+            z-index: 100;
+        }
+
+            #p-personal ul {
+                list-style-type: none;
+                list-style-image: none;
+                margin: 0;
+                padding-left: 10em;
+            }
+
+            #p-personal li {
+                line-height: 1.125em;
+                float: left;
+                margin-left: 0.75em;
+                margin-top: 0.5em;
+                font-size: 0.75em;
+                white-space: nowrap;
+            }
+
+        #left-navigation {
+            float: left;
+            margin-left: 10em;
+            margin-top: 2.5em;
+            margin-bottom: -2.5em;
+        }
+
+        #right-navigation {
+            float: right;
+            margin-top: 2.5em;
+        }
+
+        #mw-panel {
+            font-size: inherit;
+            position: absolute;
+            top: 0;
+            width: 10em;
+            left: 0;
+        }
+
+        #p-logo {
+            width: 10em;
+            height: 160px;
+        }
+
+            #p-logo a {
+                display: block;
+                width: 10em;
+                height: 160px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                text-decoration: none;
+            }
+
+        #mw-panel #p-logo + .portal {
+            background-image: none;
+            margin-top: 1em;
+        }
+
+        #mw-panel .portal {
+            margin: 0 0.6em 0 0.7em;
+            padding: 0.25em 0;
+            direction: ltr;
+            background-position: top left;
+            background-repeat: no-repeat;
+        }
+
+            #mw-panel .portal h3 {
+                font-size: 0.75em;
+                color: #444444;
+                font-weight: normal;
+                margin: 0.5em 0 0 0.66666667em;
+                padding: 0.25em 0;
+                cursor: default;
+                border: 0;
+            }
+
+            #mw-panel .portal .body {
+                margin-left: 0.5em;
+                padding-top: 0;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAAABCAAAAAAphRnkAAAAJ0lEQVQIW7XFsQEAIAyAMPD/b7uLWz8wS5youFW1UREfiIpH1Q2VBz7fGPS1dOGeAAAAAElFTkSuQmCC);
+                background-image: url(/skins/Vector/images/portal-break.png?3ea1b) !ie;
+                background-repeat: no-repeat;
+            }
+
+                #mw-panel .portal .body ul {
+                    list-style: none none;
+                    margin: 0;
+                    padding: 0.3em 0 0 0;
+                }
+
+                #mw-panel .portal .body li {
+                    line-height: 1.125em;
+                    margin: 0;
+                    padding: 0.25em 0;
+                    font-size: 0.75em;
+                    word-wrap: break-word;
+                }
+
+            #mw-panel .portal h3 {
+                font-size: 0.75em;
+                color: #444444;
+                font-weight: normal;
+                margin: 0.5em 0 0 0.66666667em;
+                padding: 0.25em 0;
+                cursor: default;
+                border: 0;
+            }
+
+            #mw-panel .portal .body li {
+                line-height: 1.125em;
+                margin: 0;
+                padding: 0.25em 0;
+                font-size: 0.75em;
+                word-wrap: break-word;
+            }
+
+        #footer {
+            margin-left: 10em;
+            margin-top: 0;
+            padding: 0.75em;
+            direction: ltr;
+        }
+
+            #footer ul {
+                list-style-type: none;
+                list-style-image: none;
+                margin: 0;
+                padding: 0;
+            }
+
+                #footer ul li {
+                    color: #222;
+                    margin: 0;
+                    padding: 0;
+                    padding-top: 0.5em;
+                    padding-bottom: 0.5em;
+                    font-size: 0.7em;
+                }
+
+            #footer #footer-info li {
+                line-height: 1.4em;
+            }
+
+            #footer ul {
+                list-style-type: none;
+                list-style-image: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            #footer #footer-icons {
+                float: right;
+            }
+
+        div.vectorTabs {
+            float: left;
+            height: 2.5em;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAIAAABmjeQ9AAAAQ0lEQVR4AWVOhQEAIAzC/X+xAXbXeoDFGA3A9yk1n4juBROcUegfarWjP3ojZvEzxs6j+nygmo+zzsk79nY+tOxdEhlf3UHVgUFrVwAAAABJRU5ErkJggg==);
+            background-image: url(/skins/Vector/images/tab-break.png?09d4b) !ie;
+            background-position: bottom left;
+            background-repeat: no-repeat;
+            padding-left: 1px;
+        }
+
+            div.vectorTabs ul {
+                float: left;
+                height: 100%;
+                list-style-type: none;
+                list-style-image: none;
+                margin: 0;
+                padding: 0;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAIAAABmjeQ9AAAAQ0lEQVR4AWVOhQEAIAzC/X+xAXbXeoDFGA3A9yk1n4juBROcUegfarWjP3ojZvEzxs6j+nygmo+zzsk79nY+tOxdEhlf3UHVgUFrVwAAAABJRU5ErkJggg==);
+                background-image: url(/skins/Vector/images/tab-break.png?09d4b) !ie;
+                background-position: right bottom;
+                background-repeat: no-repeat;
+            }
+
+                div.vectorTabs ul li {
+                    float: left;
+                    line-height: 1.125em;
+                    display: inline-block;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABkCAIAAADITs03AAAAO0lEQVR4AeSKhREAMQzDdN5/5uixuEKDpqgBjl2f78wd2DVj1+26/h///PfteVMN7zoGebcg1/Y/ZQQAlAUtQCujIJMAAAAASUVORK5CYII=);
+                    background-image: url(/skins/Vector/images/tab-normal-fade.png?1cc52) !ie;
+                    background-position: bottom left;
+                    background-repeat: repeat-x;
+                    white-space: nowrap;
+                }
+
+            div.vectorTabs li a {
+                display: inline-block;
+                height: 1.9em;
+                padding-left: 0.625em;
+                padding-right: 0.625em;
+                color: #0645ad;
+                cursor: pointer;
+                font-size: 0.8em;
+            }
+
+        div.vectorTabs {
+            float: left;
+            height: 2.5em;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAIAAABmjeQ9AAAAQ0lEQVR4AWVOhQEAIAzC/X+xAXbXeoDFGA3A9yk1n4juBROcUegfarWjP3ojZvEzxs6j+nygmo+zzsk79nY+tOxdEhlf3UHVgUFrVwAAAABJRU5ErkJggg==);
+            background-image: url(/skins/Vector/images/tab-break.png?09d4b) !ie;
+            background-position: bottom left;
+            background-repeat: no-repeat;
+            padding-left: 1px;
+        }
+
+            div.vectorTabs span {
+                display: inline-block;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAuCAIAAABmjeQ9AAAAQ0lEQVR4AWVOhQEAIAzC/X+xAXbXeoDFGA3A9yk1n4juBROcUegfarWjP3ojZvEzxs6j+nygmo+zzsk79nY+tOxdEhlf3UHVgUFrVwAAAABJRU5ErkJggg==);
+                background-image: url(/skins/Vector/images/tab-break.png?09d4b) !ie;
+                background-position: bottom right;
+                background-repeat: no-repeat;
+                height: 100%;
+            }
+
+        .mw-wiki-logo {
+            background-image: url(Logo_clear.png?bb76f);
+        }
+
+        body {
+            background-color: #f6f6f6;
+        }
+
+        .mw-body, .parsoid-body {
+            padding: 1em;
+            background-color: #ffffff;
+            color: #222222;
+            direction: ltr;
+        }
+
+        div.vectorTabs li.selected {
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAABkAQAAAABvV2fNAAAADElEQVR4AWNoGB4QAInlMgFKeRKBAAAAAElFTkSuQmCC);
+            background-image: url(/skins/Vector/images/tab-current-fade.png?22887) !ie;
+        }
+
+        #p-search {
+            float: left;
+            margin-right: 0.5em;
+            margin-left: 0.5em;
+        }
+        #simpleSearch {
+    background-color: #fff;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAQCAIAAABY/YLgAAAAJUlEQVQIHQXBsQEAAAjDoND/73UWdnerhmHVsDQZJrNWVg3Dqge6bgMe6bejNAAAAABJRU5ErkJggg==);
+    background-image: url(/skins/Vector/images/search-fade.png?50f7b)!ie;
+    background-position: top left;
+    background-repeat: repeat-x;
+    color: #000;
+    display: block;
+    width: 12.6em;
+    width: 20vw;
+    min-width: 5em;
+    max-width: 20em;
+    padding-right: 1.4em;
+    height: 1.4em;
+    margin-top: 0.65em;
+    position: relative;
+    min-height: 1px;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+    -webkit-transition: border-color 250ms;
+    -moz-transition: border-color 250ms;
+    transition: border-color 250ms;
+}
+    </style>
+
+</head>
+
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Main_Page rootpage-Main_Page skin-vector action-view">
+    <div id="mw-page-base" class="noprint"></div>
+    <div id="mw-head-base" class="noprint"></div>
+    <div id="content" class="mw-body" role="main">
+        <a id="top"></a>
+        <div id="siteNotice" class="mw-body-content">
+            <script>document.write("\u003Cdiv id=\"localNotice\" lang=\"en\" dir=\"ltr\"\u003E\u003Cdiv class=\"mw-parser-output\"\u003E\u003Cp\u003E\u003Cbr /\u003E\n\u003C/p\u003E\u003Cp\u003E\u003Cbr /\u003E\n\u003C/p\u003E\u003C/div\u003E\u003C/div\u003E");</script><div id="localNotice" lang="en" dir="ltr">
+                <div class="mw-parser-output">
+                    <p>
+                        <br>
+                    </p>
+                    <p>Hakkımda : Adım Ahmet Vehbi Aslantürk. Erciyes Üniversitesinde 5 senemdeyim. Gerçek hayat problemlerine 
+                    gerçekçi çözümler üretme gayesinde olan bir bilgisayar mühendisliği öğrencisiyim. Gömülü sistemler ve gömülü 
+                    Linux sistemlere ilgi duymaktayım. Arduino/ESP vs gibi amatör projeler haricinde pek somut bir projem olmasa da
+                    bu alana gönül vermiş birisiyim. Okuldan fırsat buldukça Gömülü Linux sistemler ve Arm/STM32 platformları 						üzerine bilgi toplamaya çalışıyorum. [ İleride bu konseptlerle birlikte projeler geliştirebilmeyi ümit ediyorum. ]
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div><div class="mw-indicators mw-body-content">
+        </div>
+        <h1 id="firstHeading" class="firstHeading" lang="en">Main Page</h1>			<div id="bodyContent" class="mw-body-content">
+
+            <div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr">
+                <div class="mw-parser-output">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td nowrap="" style="vertical-align: top; font: bold xx-large sans-serif;">
+                                    <p>
+                                        Embedded Linux Wiki
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>
+                        Welcome to the eLinux wiki!
+                    </p><p>
+                        The purpose of this wiki is to preserve and present information about the development and use of Linux in embedded systems as well as open source projects and tools for general embedded development. To use this wiki, click on one of the portal links below.
+                    </p><p>
+                        <img alt="Note" src="./eLinux.org_files/18px-Bulbgraph.png" title="Note" width="18" height="22" srcset="/images/thumb/6/60/Bulbgraph.png/27px-Bulbgraph.png 1.5x, /images/thumb/6/60/Bulbgraph.png/36px-Bulbgraph.png 2x"> <b>Note:</b>  This site has slides, and links to videos, for many years of the Embedded Linux Conference and Japan Jamboree!
+                    </p>
+<pre>See <a  title="ELC Presentations">ELC_Presentations</a> for quick links to pages with information from each event.
+</pre>
+                    <p>
+                        <br>
+                    </p>
+                    <div id="toc" class="toc">
+                        <div class="toctitle" lang="en" dir="ltr"><h2>Contents</h2><span class="toctoggle">&nbsp;[<a role="button" tabindex="0" class="togglelink">hide</a>]&nbsp;</span></div>
+                        <ul>
+                            <li class="toclevel-1 tocsection-1"><a ><span class="tocnumber">1</span> <span class="toctext">Development Portals</span></a></li>
+                            <li class="toclevel-1 tocsection-2"><a ><span class="tocnumber">2</span> <span class="toctext">Hardware Pages</span></a></li>
+                            <li class="toclevel-1 tocsection-3"><a ><span class="tocnumber">3</span> <span class="toctext">Embedded Linux Information</span></a></li>
+                            <li class="toclevel-1 tocsection-4"><a ><span class="tocnumber">4</span> <span class="toctext">Technology Watch List</span></a></li>
+                            <li class="toclevel-1 tocsection-5"><a ><span class="tocnumber">5</span> <span class="toctext">eLinux.org Information and Usage tips</span></a></li>
+                        </ul>
+                    </div>
+
+                    <h2><span class="mw-headline" id="Development_Portals">Development Portals</span></h2>
+                    <table class="toccolours mw-collapsible" width="100%" style="text-align: center">
+
+                        <tbody>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a href="#" title="Boot Time"><img alt="Welly1.jpg" src="./eLinux.org_files/Welly1.jpg" width="32" height="32"></a><br> <a href="#" title="Boot Time">Boot Time</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a href="#" title="Memory Management"><img alt="Cfcard.jpg" src="./eLinux.org_files/Cfcard.jpg" width="32" height="32"></a><br> <a title="Memory Management">Memory Management</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Security"><img alt="Padlock2.jpg" src="./eLinux.org_files/Padlock2.jpg" width="32" height="32"></a><br> <a  title="Security">Security</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <span class="mw-collapsible-toggle mw-collapsible-toggle-default" role="button" tabindex="0"><a class="mw-collapsible-text">Collapse</a></span><a  title="Events"><img alt="Event.jpg" src="./eLinux.org_files/Event.jpg" width="37" height="32"></a><br> <a title="Events">Events</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="Multimedia"><img alt="Multimedia.png" src="./eLinux.org_files/Multimedia.png" width="32" height="32"></a><br> <a  title="Multimedia">Multimedia</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Power Management"><img alt="Power.png" src="./eLinux.org_files/Power.png" width="32" height="32"></a><br> <a  title="Power Management">Power Management</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="System Size"><img alt="Blimp.jpg" src="./eLinux.org_files/Blimp.jpg" width="32" height="32"></a><br> <a  title="System Size">System Size</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a title="Hardware Hacking"><img alt="Skull.jpg" src="./eLinux.org_files/Skull.jpg" width="32" height="32"></a><br> <a  title="Hardware Hacking">Hardware Hacking</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="File Systems"><img alt="Filecab.jpg" src="./eLinux.org_files/Filecab.jpg" width="32" height="32"></a><br> <a  title="File Systems">File Systems</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Real Time"><img alt="Clockface.jpg" src="./eLinux.org_files/Clockface.jpg" width="32" height="32"></a><br> <a  title="Real Time">Real Time</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Resource Management"><img alt="Board2.jpg" src="./eLinux.org_files/Board2.jpg" width="32" height="32"></a><br> <a  title="Resource Management">Resource Management</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Development Platforms"><img alt="Board.jpg" src="./eLinux.org_files/Board.jpg" width="32" height="32"></a><br> <a  title="Development Platforms">Development Platforms</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="Networking"><img alt="Icon-network.png" src="./eLinux.org_files/Icon-network.png" width="32" height="32"></a><br> <a  title="Networking">Networking</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Developer Guidelines"><img alt="Book.png" src="./eLinux.org_files/Book.png" width="32" height="32"></a><br> <a  title="Developer Guidelines">Developer Guidelines</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Legal Issues"><img alt="Justice-scales.png" src="./eLinux.org_files/Justice-scales.png" width="32" height="32"></a><br> <a  title="Legal Issues">Legal Issues</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Toolbox"><img alt="Toolbox.jpg" src="./eLinux.org_files/Toolbox.jpg" width="32" height="30"></a><br> <a  title="Toolbox">Toolbox</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="Android Portal"><img alt="Android.png" src="./eLinux.org_files/Android.png" width="32" height="32"></a><br> <a  title="Android Portal">Android Portal</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Debugging Portal"><img alt="Icon-inspector2.png" src="./eLinux.org_files/Icon-inspector2.png" width="32" height="32"></a><br> <a  title="Debugging Portal">Debugging Portal</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Testing"><img alt="Tree-256x256.png" src="./eLinux.org_files/Tree-256x256.png" width="32" height="28"></a><br> <a  title="Testing">Testing</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Glossary"><img alt="Glossary-icon.jpg" src="./eLinux.org_files/Glossary-icon.jpg" width="32" height="32"></a><br> <a  title="Glossary">Glossary</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="Device drivers"><img alt="Steering wheel.svg" src="./eLinux.org_files/32px-Steering_wheel.svg.png" width="32" height="32" srcset="/images/thumb/3/31/Steering_wheel.svg/48px-Steering_wheel.svg.png 1.5x, /images/thumb/3/31/Steering_wheel.svg/64px-Steering_wheel.svg.png 2x"></a><br> <a  title="Device drivers">Device drivers</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Kernel Mainlining"><img alt="Arrow-tux.png" src="./eLinux.org_files/Arrow-tux.png" width="32" height="28"></a><br> <a  title="Kernel Mainlining">Kernel Mainlining</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Device Tree"><img alt="Tree-256x256.png" src="./eLinux.org_files/Tree-256x256.png" width="32" height="28"></a><br> <a  class="mw-redirect" title="Device Tree">Device Tree</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Category:Categories"><img alt="Category-box.png" src="./eLinux.org_files/Category-box.png" width="32" height="29"></a><br> <a  title="Category:Categories">Category:Categories</a>
+                                </td>
+                                <td>
+                                    <br>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2><span class="mw-headline" id="Hardware_Pages">Hardware Pages</span></h2>
+                    <p>
+                        The following hardware pages have LOTS of information on this site:
+                    </p>
+                    <table class="toccolours mw-collapsible" width="100%" style="text-align: center">
+
+                        <tbody>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="BeagleBoard"><img alt="Beagle square.png" src="./eLinux.org_files/Beagle_square.png" width="42" height="42"></a><br><a  class="mw-redirect" title="BeagleBoard">BeagleBoard</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="BeagleBone"><img alt="Beaglebone1.jpg" src="./eLinux.org_files/Beaglebone1.jpg" width="60" height="58"></a><br><a  title="BeagleBone">BeagleBone</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="BeagleBoneBlack"><img alt="Beagleboneblack.jpg" src="./eLinux.org_files/Beagleboneblack.jpg" width="60" height="44"></a><br><a  title="BeagleBoneBlack">BeagleBoneBlack</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <span class="mw-collapsible-toggle mw-collapsible-toggle-default" role="button" tabindex="0"><a class="mw-collapsible-text">Collapse</a></span><a  title="Beagleboard:BeagleBone Capes"><img alt="Beaglebone capes.jpg" src="./eLinux.org_files/Beaglebone_capes.jpg" width="65" height="45"></a><br><a h>BeagleBone Capes</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="MinnowBoard"><img alt="Minnow.png" src="./eLinux.org_files/Minnow.png" width="42" height="36"></a><br><a  class="mw-redirect" title="MinnowBoard">MinnowBoard</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a h title="RPi Hub"><img alt="RaspPi.png" src="./eLinux.org_files/RaspPi.png" width="45" height="40"></a><br><a  title="RPi Hub">Raspberry Pi</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="UDOO"><img alt="UDOO logo hand.png" src="./eLinux.org_files/65px-UDOO_logo_hand.png" width="65" height="65" srcset="/images/thumb/5/5e/UDOO_logo_hand.png/98px-UDOO_logo_hand.png 1.5x, /images/thumb/5/5e/UDOO_logo_hand.png/130px-UDOO_logo_hand.png 2x"></a><br><a  title="UDOO">UDOO</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a title="Improv"><img alt="Improv sideview cropped.png" src="./eLinux.org_files/65px-Improv_sideview_cropped.png" width="65" height="25" srcset="/images/thumb/9/9c/Improv_sideview_cropped.png/98px-Improv_sideview_cropped.png 1.5x, /images/thumb/9/9c/Improv_sideview_cropped.png/130px-Improv_sideview_cropped.png 2x"></a><br><a title="Improv">Improv</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a title="Jetson AGX Xavier"><img alt="Xavier-module-topdown-alpha-300px.png" src="./eLinux.org_files/65px-Xavier-module-topdown-alpha-300px.png" width="65" height="73" srcset="/images/thumb/9/9e/Xavier-module-topdown-alpha-300px.png/98px-Xavier-module-topdown-alpha-300px.png 1.5x, /images/thumb/9/9e/Xavier-module-topdown-alpha-300px.png/130px-Xavier-module-topdown-alpha-300px.png 2x"></a><br><a  title="Jetson AGX Xavier">Jetson_AGX_Xavier</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Jetson TK1"><img alt="TK1 Dev Kit-6350-GREEN-V4 280.jpeg" src="./eLinux.org_files/65px-TK1_Dev_Kit-6350-GREEN-V4_280.jpeg" width="65" height="39" srcset="/images/thumb/7/7f/TK1_Dev_Kit-6350-GREEN-V4_280.jpeg/98px-TK1_Dev_Kit-6350-GREEN-V4_280.jpeg 1.5x, /images/thumb/7/7f/TK1_Dev_Kit-6350-GREEN-V4_280.jpeg/130px-TK1_Dev_Kit-6350-GREEN-V4_280.jpeg 2x"></a><br><a title="Jetson TK1"> Jetson TK1</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Jetson TX1"><img alt="Jetson-tx1-devkit-thumb.jpg" src="./eLinux.org_files/65px-Jetson-tx1-devkit-thumb.jpg" width="65" height="27" srcset="/images/thumb/8/8c/Jetson-tx1-devkit-thumb.jpg/98px-Jetson-tx1-devkit-thumb.jpg 1.5x, /images/thumb/8/8c/Jetson-tx1-devkit-thumb.jpg/130px-Jetson-tx1-devkit-thumb.jpg 2x"></a><br><a  title="Jetson TX1">Jetson_TX1</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Jetson TX2"><img alt="JTX2 Devkit.png" src="./eLinux.org_files/65px-JTX2_Devkit.png" width="65" height="59" srcset="/images/thumb/5/50/JTX2_Devkit.png/98px-JTX2_Devkit.png 1.5x, /images/thumb/5/50/JTX2_Devkit.png/130px-JTX2_Devkit.png 2x"></a><br><a  title="Jetson TX2">Jetson_TX2</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="Jetson Nano"><img alt="Jetson Nano Developer Kit.png" src="./eLinux.org_files/65px-Jetson_Nano_Developer_Kit.png" width="65" height="49" srcset="/images/thumb/6/62/Jetson_Nano_Developer_Kit.png/98px-Jetson_Nano_Developer_Kit.png 1.5x, /images/thumb/6/62/Jetson_Nano_Developer_Kit.png/130px-Jetson_Nano_Developer_Kit.png 2x"></a><br><a  title="Jetson Nano">Jetson_Nano</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="MIPS Creator CI20"><img alt="Ci20 v3 perspective.png" src="./eLinux.org_files/65px-Ci20_v3_perspective.png" width="65" height="53" srcset="/images/thumb/f/f6/Ci20_v3_perspective.png/98px-Ci20_v3_perspective.png 1.5x, /images/thumb/f/f6/Ci20_v3_perspective.png/130px-Ci20_v3_perspective.png 2x"></a><br><a  title="MIPS Creator CI20">MIPS Creator CI20</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="R-Car"><img alt="65px-Silk top.png" src="./eLinux.org_files/65px-Silk_top.png" width="65" height="61"></a><br><a  title="R-Car"> Renesas R-Car Boards</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="DragonBoard"><img alt="DragonBoard-front.png" src="./eLinux.org_files/65px-DragonBoard-front.png" width="65" height="44" srcset="/images/thumb/a/aa/DragonBoard-front.png/98px-DragonBoard-front.png 1.5x, /images/thumb/a/aa/DragonBoard-front.png/130px-DragonBoard-front.png 2x"></a><br><a  title="DragonBoard"> DragonBoard</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="Parallella"><img alt="Parallela Icon 240x240.jpg" src="./eLinux.org_files/65px-Parallela_Icon_240x240.jpg" width="65" height="65" srcset="/images/thumb/f/f0/Parallela_Icon_240x240.jpg/98px-Parallela_Icon_240x240.jpg 1.5x, /images/thumb/f/f0/Parallela_Icon_240x240.jpg/130px-Parallela_Icon_240x240.jpg 2x"></a><br>
+                                    <p>
+                                        <a title="Parallella">Parallella</a>
+                                    </p>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="RZ-G"><img alt="65px-G1E top.png" src="./eLinux.org_files/65px-65px-G1E_top.png" width="65" height="61" srcset="/images/e/ee/65px-G1E_top.png 1.5x"></a><br><a  title="RZ-G"> Renesas RZ/G</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a title="RZ-A"><img alt="Rskrza1 icon.png" src="./eLinux.org_files/65px-Rskrza1_icon.png" width="65" height="27" srcset="/images/thumb/3/31/Rskrza1_icon.png/98px-Rskrza1_icon.png 1.5x, /images/thumb/3/31/Rskrza1_icon.png/130px-Rskrza1_icon.png 2x"></a><br><a  title="RZ-A"> Renesas RZ/A</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a title="Pine64"><img alt="Pine64bw.jpg" src="./eLinux.org_files/65px-Pine64bw.jpg" width="65" height="40" srcset="/images/thumb/0/04/Pine64bw.jpg/98px-Pine64bw.jpg 1.5x, /images/thumb/0/04/Pine64bw.jpg/130px-Pine64bw.jpg 2x"></a><br><a  title="Pine64"> PINE64</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a  title="ARTIK"><img alt="Artikold-10a.png" src="./eLinux.org_files/65px-Artikold-10a.png" width="65" height="59" srcset="/images/thumb/7/76/Artikold-10a.png/98px-Artikold-10a.png 1.5x, /images/thumb/7/76/Artikold-10a.png/130px-Artikold-10a.png 2x"></a><br><a  title="ARTIK"> ARTIK</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Espresso"><img alt="ESPressobrett-a.png" src="./eLinux.org_files/65px-ESPressobrett-a.png" width="65" height="31" srcset="/images/thumb/9/92/ESPressobrett-a.png/98px-ESPressobrett-a.png 1.5x, /images/thumb/9/92/ESPressobrett-a.png/130px-ESPressobrett-a.png 2x"></a><br><a  title="Espresso"> Espresso</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a title="SanCloud"><img alt="SanCloud-BBE.jpg" src="./eLinux.org_files/65px-SanCloud-BBE.jpg" width="65" height="43" srcset="/images/thumb/6/6c/SanCloud-BBE.jpg/98px-SanCloud-BBE.jpg 1.5x, /images/thumb/6/6c/SanCloud-BBE.jpg/130px-SanCloud-BBE.jpg 2x"></a><br><a " title="SanCloud"> SanCloud BeagleBoneEnhanced</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Tegra"><img alt="TK1 Dev Kit-6350-GREEN-V4 280.jpeg" src="./eLinux.org_files/65px-TK1_Dev_Kit-6350-GREEN-V4_280.jpeg" width="65" height="39" srcset="/images/thumb/7/7f/TK1_Dev_Kit-6350-GREEN-V4_280.jpeg/98px-TK1_Dev_Kit-6350-GREEN-V4_280.jpeg 1.5x, /images/thumb/7/7f/TK1_Dev_Kit-6350-GREEN-V4_280.jpeg/130px-TK1_Dev_Kit-6350-GREEN-V4_280.jpeg 2x"></a><br><a  title="Tegra"> Mainline Linux<br>on Tegra</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 25%;">
+                                    <a title="OpenPhoenux"><img alt="OpenPhoenux-1024.png" src="./eLinux.org_files/65px-OpenPhoenux-1024.png" width="65" height="65" srcset="/images/thumb/0/0c/OpenPhoenux-1024.png/98px-OpenPhoenux-1024.png 1.5x, /images/thumb/0/0c/OpenPhoenux-1024.png/130px-OpenPhoenux-1024.png 2x"></a><br><a  class="mw-redirect" title="OpenPhoenux">OpenPhoenux</a>
+                                </td>
+                                <td style="width: 25%;">
+                                    <a  title="Banana Pi"><img alt="Bpi logo.png" src="./eLinux.org_files/65px-Bpi_logo.png" width="65" height="57" srcset="/images/a/ae/Bpi_logo.png 1.5x"></a><br><a title="Banana Pi">Banana Pi</a>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2><span class="mw-headline" id="Embedded_Linux_Information">Embedded Linux Information</span></h2>
+                    <table class="toccolours mw-collapsible" width="100%" style="text-align: center">
+
+                        <tbody>
+                            <tr>
+                                <td style="width: 20%;">
+                                    <a  title="Products"><img alt="Productsico.jpg" src="./eLinux.org_files/Productsico.jpg" width="32" height="32"></a><br> <a  title="Products">Products</a>
+                                </td>
+                                <td style="width: 20%;">
+                                    <a  title="Companies"><img alt="Companysico.jpg" src="./eLinux.org_files/Companysico.jpg" width="32" height="32"></a><br> <a  title="Companies">Companies</a>
+                                </td>
+                                <td style="width: 20%;">
+                                    <a title="Vendors"><img alt="Vendorsico.jpg" src="./eLinux.org_files/Vendorsico.jpg" width="32" height="32"></a><br> <a  title="Vendors">Vendors</a>
+                                </td>
+                                <td style="width: 20%;">
+                                    <span class="mw-collapsible-toggle mw-collapsible-toggle-default" role="button" tabindex="0"><a class="mw-collapsible-text">Collapse</a></span><a  title="Processors"><img alt="Processorsico.png" src="./eLinux.org_files/Processorsico.png" width="32" height="32"></a><br> <a  title="Processors">Processors</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a h title="Community"><img alt="Communityico.jpg" src="./eLinux.org_files/Communityico.jpg" width="30" height="30"></a><br> <a  title="Community">Community</a>
+                                </td>
+                                <td>
+                                    <a  title="Experts"><img alt="Communityico.jpg" src="./eLinux.org_files/Communityico.jpg" width="30" height="30"></a><br> <a  title="Experts">Experts</a>
+                                </td>
+                                <td>
+                                    <a  title="Jobs"><img alt="At-work.jpg" src="./eLinux.org_files/At-work.jpg" width="32" height="32"></a><br> <a h title="Jobs">Jobs</a>
+                                </td>
+                                <td>
+                                    <a  title="Board and Chip Vendors"><img alt="Companysico.jpg" src="./eLinux.org_files/Companysico.jpg" width="32" height="32"></a><br> <a  title="Board and Chip Vendors">Board and Chip Vendors</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a  title="Education &amp; Training"><img alt="Graduation-cap.png" src="./eLinux.org_files/65px-Graduation-cap.png" width="65" height="65" srcset="/images/thumb/2/25/Graduation-cap.png/98px-Graduation-cap.png 1.5x, /images/thumb/2/25/Graduation-cap.png/130px-Graduation-cap.png 2x"></a><br> <a title="Education &amp; Training">Education &amp; Training</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h2><span class="mw-headline" id="Technology_Watch_List">Technology Watch List</span></h2>
+                    <p>
+                        See the <a  title="Technology Watch List">Technology Watch List</a> for a list of interesting
+                        projects and their current status in the Linux development
+                        community.
+                    </p>
+                    <h2><span class="mw-headline" id="eLinux.org_Information_and_Usage_tips">eLinux.org Information and Usage tips</span></h2>
+                    <p>
+                        The main portals of the site take you to lists of resources or collections of
+                        information, you can use to tackle problems in the particular area referred to.
+                        For example, if you have a problem with boot up time of your embedded Linux system,
+                        click on "Boot Time".
+                        You can also see a list of <a  title="Special:AllPages">all the pages on this site</a>.
+                    </p><p>
+                        Please read <a title="ELinuxWiki:Policies &amp; Guidelines">Policies &amp; Guidelines</a> for a detail list of site policies.
+                    </p><p>
+                        The following icons are for general information about this site, and related resources.
+                    </p>
+                    <div style="margin-left: 50px;">
+                        <table style="width: 100%; margin:0; padding:0; border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 25%;">
+                                        <p>
+                                            <a  title="Help:About"><img alt="Mp info.png" src="./eLinux.org_files/Mp_info.png" width="16" height="16"></a> <a  title="Help:About">About</a><br>
+                                            <a  title="Help:Contents"><img alt="Mp help.png" src="./eLinux.org_files/Mp_help.png" width="16" height="16"></a> <a  title="Help:Contents">Help</a>
+                                        </p>
+                                    </td>
+                                    <td style="width: 25%;">
+                                        <p>
+                                            <a  title="Help:Editing"><img alt="Mp man.png" src="./eLinux.org_files/Mp_man.png" width="16" height="16"></a> <a  title="Help:Editing">Editing Help</a><br>
+                                            <a  title="Wanted"><img alt="Mp wanted.png" src="./eLinux.org_files/Mp_wanted.png" width="16" height="16"></a> <a  title="Wanted">Wanted Pages</a>
+                                        </p>
+                                    </td>
+                                    <td style="width: 25%;">
+                                        <p>
+                                            <a  title="ELinuxWiki:Mailing List"><img alt="Mp mail.png" src="./eLinux.org_files/Mp_mail.png" width="16" height="16"></a> <a  title="ELinuxWiki:Mailing List">Mailing Lists</a><br>
+                                            <a  title="ELinuxWiki:Irc"><img alt="Mp irc.png" src="./eLinux.org_files/Mp_irc.png" width="16" height="16"></a> <a  title="ELinuxWiki:Irc">IRC</a>
+                                        </p>
+                                    </td>
+                                    <td style="width: 25%;">
+                                        <p>
+                                            <a  rel="nofollow"><img alt="Mp twitter.png" src="./eLinux.org_files/16px-Mp_twitter.png" width="16" height="16" srcset="/images/c/ca/Mp_twitter.png 1.5x"></a> <a rel="nofollow" class="external text" Twitter Follow</a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        We hope this information is helpful in your development tasks.
+                    </p><p>
+                        If you see something wrong, please change it.  If you know something more about an issue, please
+                        add it.  Please <a  title="Volunteer editor tasks">help to extend</a> this wiki. Thank you!
+                    </p>
+                    <hr>
+                    <p>
+                        To experiment with this wiki try <a  title="Sandbox">Sandbox</a>. See the <a rel="nofollow" class="external text" >User's Guide</a> for usage and configuration help.<br>
+                    </p>
+                   
+                </div>
+                 -->
+            </div>
+            <div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a  title="Special:Categories">Categories</a>: <ul><li><a title="Category:Community">Community</a></li><li><a  title="Category:Categories">Categories</a></li></ul></div></div>				<div class="visualClear"></div>
+        </div>
+    </div>
+    <div id="mw-navigation">
+        <h2>Navigation menu</h2>
+        <div id="mw-head">
+            <div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+                <ul>
+                    <li id="pt-login"><a  accesskey="o">Log in</a></li>
+                    <li id="pt-createaccount"><a  title="You are encouraged to create an account and log in; however, it is not mandatory">Request account</a></li>
+                </ul>
+            </div>
+            <div id="left-navigation">
+                <div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+                    <ul>
+                        <li id="ca-nstab-main" class="selected"><span><a  title="View the content page [alt-shift-c]" accesskey="c">Main page</a></span></li>
+                        <li id="ca-talk"><span><a  rel="discussion" title="Discussion about the content page [alt-shift-t]" accesskey="t">Discussion</a></span></li>
+                    </ul>
+                </div>
+                <div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+                    <div class="menu">
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+            <div id="right-navigation">
+                <div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+                    <ul>
+                        <li id="ca-view" class="collapsible selected"><span><a >Read</a></span></li>
+                        <li id="ca-viewsource" class="collapsible">
+                            <span>
+                                <a title="This page is protected.
+You can view its source [alt-shift-e]" accesskey="e">View source</a>
+                            </span>
+                        </li>
+                        <li id="ca-history" class="collapsible"><span><a title="Past revisions of this page [alt-shift-h]" accesskey="h">View history</a></span></li>
+                    </ul>
+                </div>
+                <div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label" style="">
+                    <div class="menu">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div id="p-search" role="search">
+                    <form action="https://elinux.org/index.php" id="searchform">
+                        <div id="simpleSearch">
+                            <input type="search" name="search" placeholder="Search eLinux.org" title="Search eLinux.org [alt-shift-f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Special:Search" name="title"><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="mw-panel">
+            <div id="p-logo" role="banner"><a class="mw-wiki-logo"  title="Visit the main page"></a></div>
+            <div class="portal" role="navigation" id="p-Navigation" aria-labelledby="p-Navigation-label">
+                <div class="body">
+                    <ul>
+                        <li id="n-mainpage"><a title="Visit the main page [alt-shift-z]" accesskey="z">Main Page</a></li>
+                        <li id="n-portal"><a  title="About the project, what you can do, where to find things">Community portal</a></li>
+                        <li id="n-currentevents"><a  title="Find background information on current events">Current events</a></li>
+                        <li id="n-recentchanges"><a title="A list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+                        <li id="n-help"><a  title="The place to find out">Help</a></li>
+                        <li id="n-Volunteering"><a Volunteering</a></li>
+                        <li id="n-Bug-Tracker"><a  rel="nofollow">Bug Tracker</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portal" role="navigation" id="p-Where_else_to_find_us" aria-labelledby="p-Where_else_to_find_us-label">
+                <h3 id="p-Where_else_to_find_us-label">Where else to find us</h3>
+                <div class="body">
+                    <ul>
+                        <li id="n-Google.2B-Community"><a  rel="nofollow">Google+ Community</a></li>
+                        <li id="n-Twitter-.28.40elinux.29"><a  rel="nofollow">Twitter (@elinux)</a></li>
+                        <li id="n-.23elinux-on-Freenode"><a  rel="nofollow">#elinux on Freenode</a></li>
+                        <li id="n-Facebook-.28.40elinux.org.29"><a >Facebook (@elinux.org)</a></li>
+                        <li id="n-Mailing-Lists"><a  rel="nofollow">Mailing Lists</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+                <h3 id="p-tb-label">Tools</h3>
+                <div class="body">
+                    <ul>
+                        <li id="t-whatlinkshere"><a  title="A list of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+                        <li id="t-recentchangeslinked"><a  rel="nofollow" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+                        <li id="t-specialpages"><a  title="A list of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+                        <li id="t-print"><a  rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>
+                        <li id="t-permalink"><a >Permanent link</a></li>
+                        <li id="t-info"><a>Page information</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" role="contentinfo">
+        <ul id="footer-info">
+            <li id="footer-info-lastmod"> This page was last edited on 20 December 2019, at 14:41.</li>
+            <li id="footer-info-copyright">Content is available under <a class="external" rel="nofollow" >a Creative Commons Attribution-ShareAlike 3.0 Unported License</a> unless otherwise noted.</li>
+        </ul>
+        <ul id="footer-places">
+            <li id="footer-places-privacy"><a  title="eLinux.org:Privacy policy">Privacy policy</a></li>
+            <li id="footer-places-about"><a >About eLinux.org</a></li>
+            <li id="footer-places-disclaimer"><a  title="eLinux.org:General disclaimer">Disclaimers</a></li>
+        </ul>
+        <ul id="footer-icons" class="noprint">
+            <li id="footer-copyrightico">
+                <a><img src="./eLinux.org_files/88x31.png" alt="a Creative Commons Attribution-ShareAlike 3.0 Unported License" width="88" height="31"></a>
+            </li>
+            <li id="footer-poweredbyico">
+                <a><img src="./eLinux.org_files/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/resources/assets/poweredby_mediawiki_132x47.png 1.5x, /resources/assets/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>
+            </li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+    <script>(window.RLQ = window.RLQ || []).push(function () { mw.config.set({ "wgPageParseReport": { "limitreport": { "cputime": "0.130", "walltime": "0.250", "ppvisitednodes": { "value": 70, "limit": 1000000 }, "ppgeneratednodes": { "value": 166, "limit": 1000000 }, "postexpandincludesize": { "value": 91, "limit": 2097152 }, "templateargumentsize": { "value": 0, "limit": 2097152 }, "expansiondepth": { "value": 3, "limit": 40 }, "expensivefunctioncount": { "value": 0, "limit": 100 }, "unstrip-depth": { "value": 0, "limit": 20 }, "unstrip-size": { "value": 0, "limit": 5000000 }, "timingprofile": ["100.00%    5.181      1 Template:Note", "100.00%    5.181      1 -total"] }, "cachereport": { "timestamp": "20201204185559", "ttl": 86400, "transientcontent": false } } }); });</script>
+    <script>(window.RLQ = window.RLQ || []).push(function () { mw.config.set({ "wgBackendResponseTime": 200 }); });</script>
+
+
+    <div class="suggestions" style="display: none; font-size: 13px;"><div class="suggestions-results"></div><div class="suggestions-special"></div></div>
+</body>
+</html>
